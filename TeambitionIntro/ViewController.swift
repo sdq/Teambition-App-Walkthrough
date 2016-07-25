@@ -10,7 +10,11 @@ import UIKit
 import RazzleDazzle
 
 private let kScreenHeight = UIScreen.mainScreen().bounds.height
-private let pixel = kScreenHeight / 667
+private let kScreenWidth = UIScreen.mainScreen().bounds.width
+private let k6sHeight: CGFloat = 667
+private let k6sWidth: CGFloat = 375
+private let pixel = kScreenHeight / k6sHeight
+private let widthRate = k6sWidth / kScreenWidth
 
 class ViewController: AnimatedPagingScrollViewController {
     
@@ -69,13 +73,13 @@ extension ViewController {
         view.addSubview(launchView)
         
         let centerX = self.view.center.x
-        let whiteCover1 = UIView(frame: CGRect(x: centerX - 110*pixel, y: 46*pixel, width: 80*pixel, height: 85*pixel))
+        let whiteCover1 = UIView(frame: CGRect(x: centerX - 110*pixel, y: 46*pixel, width: 80*pixel, height: 90*pixel))
         whiteCover1.backgroundColor = UIColor.whiteColor()
         launchView.addSubview(whiteCover1)
-        let whiteCover2 = UIView(frame: CGRect(x: centerX - 130*pixel, y: 205*pixel, width: 100*pixel, height: 90*pixel))
+        let whiteCover2 = UIView(frame: CGRect(x: centerX - 130*pixel, y: 205*pixel, width: 115*pixel, height: 92*pixel))
         whiteCover2.backgroundColor = UIColor.whiteColor()
         launchView.addSubview(whiteCover2)
-        let whiteCover3 = UIView(frame: CGRect(x: centerX - 115*pixel, y: 358*pixel, width: 90*pixel, height: 70*pixel))
+        let whiteCover3 = UIView(frame: CGRect(x: centerX - 115*pixel, y: 358*pixel, width: 90*pixel, height: 72*pixel))
         whiteCover3.backgroundColor = UIColor.whiteColor()
         launchView.addSubview(whiteCover3)
         
@@ -129,14 +133,14 @@ extension ViewController {
                     launchView.backgroundColor = UIColor.clearColor()
                     logo.alpha = 0
                     let centerX = self.view.center.x
-                    moledkine.frame = CGRect(x: centerX - 108.5*pixel, y: 48*pixel, width: 52*pixel , height: 72*pixel)
-                    note.frame = CGRect(x: centerX - 76.5*pixel, y: 68*pixel, width: 43*pixel , height: 59*pixel)
-                    illustrator.frame = CGRect(x: centerX - 65.5*pixel, y: 214*pixel, width: 36*pixel , height: 53*pixel)
+                    moledkine.frame = CGRect(x: centerX - 108.5*pixel, y: 54*pixel, width: 52*pixel , height: 72*pixel)
+                    note.frame = CGRect(x: centerX - 76.5*pixel, y: 75*pixel, width: 43*pixel , height: 59*pixel)
+                    illustrator.frame = CGRect(x: centerX - 59.5*pixel, y: 215*pixel, width: 36*pixel , height: 53*pixel)
                     pantone.frame = CGRect(x: centerX - 127.5*pixel, y: 205*pixel, width: 54*pixel , height: 74*pixel)
-                    coffee.frame = CGRect(x: centerX - 46.5*pixel, y: 394*pixel, width: 23*pixel , height: 27*pixel)
-                    terminal.frame = CGRect(x: centerX - 112.5*pixel, y: 358*pixel, width: 74*pixel , height: 61*pixel)
+                    coffee.frame = CGRect(x: centerX - 46*pixel, y: 395*pixel, width: 22*pixel , height: 26*pixel)
+                    terminal.frame = CGRect(x: centerX - 113*pixel, y: 358*pixel, width: 76*pixel , height: 63*pixel)
                     }, completion: { (complete) in
-                        UIView.animateWithDuration(0.4, animations: {
+                        UIView.animateWithDuration(0.25, animations: {
                             launchView.alpha = 0
                             }, completion: { (complete) in
                                 launchView.removeFromSuperview()
@@ -199,22 +203,24 @@ extension ViewController {
     }
     
     private func configurePage1Description() {
-        let height = NSLayoutConstraint(item: page1Description, attribute: .Height, relatedBy: .LessThanOrEqual, toItem: scrollView, attribute: .Height, multiplier: 1, constant: 99*pixel)
-        let bottom = NSLayoutConstraint(item: page1Description, attribute: .Bottom, relatedBy: .GreaterThanOrEqual, toItem: scrollView, attribute: .Bottom, multiplier: 1, constant: -94 * pixel)
-        NSLayoutConstraint.activateConstraints([height, bottom])
+        let height = NSLayoutConstraint(item: page1Description, attribute: .Height, relatedBy: .Equal, toItem: scrollView, attribute: .Height, multiplier: 99/k6sHeight, constant: 1)
+        let width = NSLayoutConstraint(item: page1Description, attribute: .Width, relatedBy: .Equal, toItem: scrollView, attribute: .Height, multiplier: 309/k6sHeight, constant: 1)
+        let bottom = NSLayoutConstraint(item: page1Description, attribute: .Bottom, relatedBy: .Equal, toItem: scrollView, attribute: .Bottom, multiplier: 1, constant: -94 * pixel)
+        NSLayoutConstraint.activateConstraints([height, width, bottom])
         
         keepView(page1Description, onPage: 0)
     }
     
     private func configureOperationPart() {
-        let height = NSLayoutConstraint(item: operationPart, attribute: .Height, relatedBy: .LessThanOrEqual, toItem: scrollView, attribute: .Height, multiplier: 1, constant: 137*pixel)
-        let top = NSLayoutConstraint(item: operationPart, attribute: .Top, relatedBy: .GreaterThanOrEqual, toItem: scrollView, attribute: .Top, multiplier: 1, constant: kScreenHeight)
-        NSLayoutConstraint.activateConstraints([height, top])
+        let height = NSLayoutConstraint(item: operationPart, attribute: .Height, relatedBy: .Equal, toItem: scrollView, attribute: .Height, multiplier: 130/k6sHeight, constant: 1)
+        let width = NSLayoutConstraint(item: operationPart, attribute: .Width, relatedBy: .Equal, toItem: scrollView, attribute: .Height, multiplier: 305/k6sHeight, constant: 1)
+        let top = NSLayoutConstraint(item: operationPart, attribute: .Top, relatedBy: .Equal, toItem: scrollView, attribute: .Top, multiplier: 1, constant: kScreenHeight)
+        NSLayoutConstraint.activateConstraints([height, width, top])
         
         keepView(operationPart, onPages: [0,1])
         
         let operationConstraintAnimation = ConstraintConstantAnimation(superview: scrollView, constraint: top)
-        operationConstraintAnimation[0] = (20*pixel)
+        operationConstraintAnimation[0] = (27*pixel)
         operationConstraintAnimation[0.7] = (-30*pixel)
         animator.addAnimation(operationConstraintAnimation)
         
@@ -225,9 +231,10 @@ extension ViewController {
     }
     
     private func configureDevelopmentPart() {
-        let height = NSLayoutConstraint(item: developmentPart, attribute: .Height, relatedBy: .LessThanOrEqual, toItem: scrollView, attribute: .Height, multiplier: 1, constant: 137*pixel)
-        let top = NSLayoutConstraint(item: developmentPart, attribute: .Top, relatedBy: .GreaterThanOrEqual, toItem: scrollView, attribute: .Top, multiplier: 1, constant: kScreenHeight)
-        NSLayoutConstraint.activateConstraints([height, top])
+        let height = NSLayoutConstraint(item: developmentPart, attribute: .Height, relatedBy: .Equal, toItem: scrollView, attribute: .Height, multiplier: 130/k6sHeight, constant: 1)
+        let width = NSLayoutConstraint(item: developmentPart, attribute: .Width, relatedBy: .Equal, toItem: scrollView, attribute: .Height, multiplier: 305/k6sHeight, constant: 1)
+        let top = NSLayoutConstraint(item: developmentPart, attribute: .Top, relatedBy: .Equal, toItem: scrollView, attribute: .Top, multiplier: 1, constant: kScreenHeight)
+        NSLayoutConstraint.activateConstraints([height, width, top])
         
         keepView(developmentPart, onPages: [0,1])
         
@@ -243,9 +250,10 @@ extension ViewController {
     }
     
     private func configureDesignPart() {
-        let height = NSLayoutConstraint(item: designPart, attribute: .Height, relatedBy: .LessThanOrEqual, toItem: scrollView, attribute: .Height, multiplier: 1, constant: 137*pixel)
-        let top = NSLayoutConstraint(item: designPart, attribute: .Top, relatedBy: .GreaterThanOrEqual, toItem: scrollView, attribute: .Top, multiplier: 1, constant: kScreenHeight)
-        NSLayoutConstraint.activateConstraints([height, top])
+        let height = NSLayoutConstraint(item: designPart, attribute: .Height, relatedBy: .Equal, toItem: scrollView, attribute: .Height, multiplier: 130/k6sHeight, constant: 1)
+        let width = NSLayoutConstraint(item: designPart, attribute: .Width, relatedBy: .Equal, toItem: scrollView, attribute: .Height, multiplier: 305/k6sHeight, constant: 1)
+        let top = NSLayoutConstraint(item: designPart, attribute: .Top, relatedBy: .Equal, toItem: scrollView, attribute: .Top, multiplier: 1, constant: kScreenHeight)
+        NSLayoutConstraint.activateConstraints([height, width, top])
         
         keepView(designPart, onPages: [0,1])
         
@@ -261,11 +269,13 @@ extension ViewController {
     }
     
     private func configureDesignLabel() {
-        let height = NSLayoutConstraint(item: designLabel, attribute: .Height, relatedBy: .LessThanOrEqual, toItem: scrollView, attribute: .Height, multiplier: 1, constant: 22*pixel)
+        let height = NSLayoutConstraint(item: designLabel, attribute: .Height, relatedBy: .Equal, toItem: scrollView, attribute: .Height, multiplier: 17/k6sHeight, constant: 1)
+        let width = NSLayoutConstraint(item: designLabel, attribute: .Width, relatedBy: .Equal, toItem: scrollView, attribute: .Height, multiplier: 51/k6sHeight, constant: 1)
         let top = NSLayoutConstraint(item: designLabel, attribute: .Top, relatedBy: .GreaterThanOrEqual, toItem: scrollView, attribute: .Top, multiplier: 1, constant: kScreenHeight)
-        NSLayoutConstraint.activateConstraints([height, top])
-        
-        keepView(designLabel, onPages: [0.15, 0.9, 2], atTimes: [0,1,2])
+        NSLayoutConstraint.activateConstraints([height, width, top])
+        let page1 = 0.15 * widthRate
+        let page2 = 1 - 0.09 * widthRate
+        keepView(designLabel, onPages: [page1, page2, 2], atTimes: [0,1,2])
         
         let designLabelConstraintAnimation = ConstraintConstantAnimation(superview: scrollView, constraint: top)
         designLabelConstraintAnimation[0] = (231*pixel)
@@ -275,28 +285,36 @@ extension ViewController {
     }
     
     private func configureAILogo1() {
-        let height = NSLayoutConstraint(item: aiLogo1, attribute: .Height, relatedBy: .LessThanOrEqual, toItem: scrollView, attribute: .Height, multiplier: 1, constant: 19*pixel)
+        let height = NSLayoutConstraint(item: aiLogo1, attribute: .Height, relatedBy: .LessThanOrEqual, toItem: scrollView, attribute: .Height, multiplier: 19/k6sHeight, constant: 1)
+        let width = NSLayoutConstraint(item: aiLogo1, attribute: .Width, relatedBy: .LessThanOrEqual, toItem: scrollView, attribute: .Height, multiplier: 19/k6sHeight, constant: 1)
         let top = NSLayoutConstraint(item: aiLogo1, attribute: .Top, relatedBy: .GreaterThanOrEqual, toItem: scrollView, attribute: .Top, multiplier: 1, constant: kScreenHeight)
-        NSLayoutConstraint.activateConstraints([height, top])
+        NSLayoutConstraint.activateConstraints([height, width, top])
         
-        keepView(aiLogo1, onPages: [-0.15, 0.7, 1.88], atTimes: [0,1,2])
+        let page1 = -0.135 * widthRate
+        let page2 = 1 - 0.29 * widthRate
+        let page3 = 2 - 0.13 * widthRate
+        keepView(aiLogo1, onPages: [page1, page2, page3], atTimes: [0,1,2])
         
         let aiLogo1ConstraintAnimation = ConstraintConstantAnimation(superview: scrollView, constraint: top)
         aiLogo1ConstraintAnimation[0] = (231*pixel)
         aiLogo1ConstraintAnimation[1] = (72*pixel)
-        aiLogo1ConstraintAnimation[2] = (46*pixel)
+        aiLogo1ConstraintAnimation[2] = (48*pixel)
         animator.addAnimation(aiLogo1ConstraintAnimation)
     }
     
     private func configureAILogo2() {
-        let height = NSLayoutConstraint(item: aiLogo2, attribute: .Height, relatedBy: .LessThanOrEqual, toItem: scrollView, attribute: .Height, multiplier: 1, constant: 53*pixel)
+        let height = NSLayoutConstraint(item: aiLogo2, attribute: .Height, relatedBy: .LessThanOrEqual, toItem: scrollView, attribute: .Height, multiplier: 53/k6sHeight, constant: 1)
+        let width = NSLayoutConstraint(item: aiLogo2, attribute: .Width, relatedBy: .LessThanOrEqual, toItem: scrollView, attribute: .Height, multiplier: 30/k6sHeight, constant: 1)
         let top = NSLayoutConstraint(item: aiLogo2, attribute: .Top, relatedBy: .GreaterThanOrEqual, toItem: scrollView, attribute: .Top, multiplier: 1, constant: kScreenHeight)
-        NSLayoutConstraint.activateConstraints([height, top])
+        NSLayoutConstraint.activateConstraints([height, width, top])
         
-        keepView(aiLogo2, onPages: [-0.12, 0.73, 1.91], atTimes: [0,1,2])
+        let page1 = -0.105 * widthRate
+        let page2 = 1 - 0.26 * widthRate
+        let page3 = 2 - 0.09 * widthRate
+        keepView(aiLogo2, onPages: [page1, page2, page3], atTimes: [0,1,2])
         
         let aiLogo2ConstraintAnimation = ConstraintConstantAnimation(superview: scrollView, constraint: top)
-        aiLogo2ConstraintAnimation[0] = (212*pixel)
+        aiLogo2ConstraintAnimation[0] = (214*pixel)
         aiLogo2ConstraintAnimation[1] = (55*pixel)
         aiLogo2ConstraintAnimation[2] = (30*pixel)
         animator.addAnimation(aiLogo2ConstraintAnimation)
@@ -309,16 +327,19 @@ extension ViewController {
     }
     
     private func configurePage2Description() {
-        let height = NSLayoutConstraint(item: page2Description, attribute: .Height, relatedBy: .LessThanOrEqual, toItem: scrollView, attribute: .Height, multiplier: 1, constant: 99*pixel)
+        let height = NSLayoutConstraint(item: page2Description, attribute: .Height, relatedBy: .LessThanOrEqual, toItem: scrollView, attribute: .Height, multiplier: 99/k6sHeight, constant: 1)
+        let width = NSLayoutConstraint(item: page2Description, attribute: .Width, relatedBy: .Equal, toItem: scrollView, attribute: .Height, multiplier: 309/k6sHeight, constant: 1)
         let bottom = NSLayoutConstraint(item: page2Description, attribute: .Bottom, relatedBy: .GreaterThanOrEqual, toItem: scrollView, attribute: .Bottom, multiplier: 1, constant: -(94*pixel))
-        NSLayoutConstraint.activateConstraints([height,bottom])
+        NSLayoutConstraint.activateConstraints([height, width, bottom])
         keepView(page2Description, onPage: 1)
     }
     
     private func configureMemberA() {
-        let height = NSLayoutConstraint(item: memberA, attribute: .Height, relatedBy: .LessThanOrEqual, toItem: scrollView, attribute: .Height, multiplier: 1, constant: 80*pixel)
+        let height = NSLayoutConstraint(item: memberA, attribute: .Height, relatedBy: .Equal, toItem: scrollView, attribute: .Height, multiplier: 80/k6sHeight, constant: 1)
+        let width = NSLayoutConstraint(item: memberA, attribute: .Width, relatedBy: .Equal, toItem: scrollView, attribute: .Height, multiplier: 259/k6sHeight, constant: 1)
         let top = NSLayoutConstraint(item: memberA, attribute: .Top, relatedBy: .GreaterThanOrEqual, toItem: scrollView, attribute: .Top, multiplier: 1, constant: kScreenHeight)
-        NSLayoutConstraint.activateConstraints([height,top])
+        NSLayoutConstraint.activateConstraints([height, width, top])
+        
         keepView(memberA, onPages: [0.7,2], atTimes: [0.7,2])
         
         let memberAAnimation = AlphaAnimation(view: memberA)
@@ -339,9 +360,10 @@ extension ViewController {
     }
     
     private func configureMemberB() {
-        let height = NSLayoutConstraint(item: memberB, attribute: .Height, relatedBy: .LessThanOrEqual, toItem: scrollView, attribute: .Height, multiplier: 1, constant: 80*pixel)
+        let height = NSLayoutConstraint(item: memberB, attribute: .Height, relatedBy: .Equal, toItem: scrollView, attribute: .Height, multiplier: 80/k6sHeight, constant: 1)
+        let width = NSLayoutConstraint(item: memberB, attribute: .Width, relatedBy: .Equal, toItem: scrollView, attribute: .Height, multiplier: 259/k6sHeight, constant: 1)
         let top = NSLayoutConstraint(item: memberB, attribute: .Top, relatedBy: .GreaterThanOrEqual, toItem: scrollView, attribute: .Top, multiplier: 1, constant: kScreenHeight)
-        NSLayoutConstraint.activateConstraints([height,top])
+        NSLayoutConstraint.activateConstraints([height, width, top])
         keepView(memberB, onPages: [0.9, 0.7, 2], atTimes: [0.5, 0.7, 2])
         
         let MemberBAnimation = AlphaAnimation(view: memberB)
@@ -362,9 +384,10 @@ extension ViewController {
     }
     
     private func configureMemberC() {
-        let height = NSLayoutConstraint(item: memberC, attribute: .Height, relatedBy: .LessThanOrEqual, toItem: scrollView, attribute: .Height, multiplier: 1, constant: 80*pixel)
+        let height = NSLayoutConstraint(item: memberC, attribute: .Height, relatedBy: .Equal, toItem: scrollView, attribute: .Height, multiplier: 80/k6sHeight, constant: 1)
+        let width = NSLayoutConstraint(item: memberC, attribute: .Width, relatedBy: .Equal, toItem: scrollView, attribute: .Height, multiplier: 259/k6sHeight, constant: 1)
         let top = NSLayoutConstraint(item: memberC, attribute: .Top, relatedBy: .GreaterThanOrEqual, toItem: scrollView, attribute: .Top, multiplier: 1, constant: (331*pixel))
-        NSLayoutConstraint.activateConstraints([height,top])
+        NSLayoutConstraint.activateConstraints([height, width, top])
         keepView(memberC, onPages: [1.1, 0.7, 2], atTimes: [0.5, 0.7, 2])
         
         let memberCAnimation = AlphaAnimation(view: memberC)
@@ -385,9 +408,10 @@ extension ViewController {
     }
     
     private func configureAddMembers() {
-        let top = NSLayoutConstraint(item: addMember, attribute: .Top, relatedBy: .GreaterThanOrEqual, toItem: scrollView, attribute: .Top, multiplier: 1, constant: 41*pixel)
-        let height = NSLayoutConstraint(item: addMember, attribute: .Height, relatedBy: .LessThanOrEqual, toItem: scrollView, attribute: .Height, multiplier: 1, constant: 394*pixel)
-        NSLayoutConstraint.activateConstraints([top,height])
+        let top = NSLayoutConstraint(item: addMember, attribute: .Top, relatedBy: .GreaterThanOrEqual, toItem: scrollView, attribute: .Top, multiplier: 1, constant: 41 * pixel)
+        let height = NSLayoutConstraint(item: addMember, attribute: .Height, relatedBy: .LessThanOrEqual, toItem: scrollView, attribute: .Height, multiplier: 394/k6sHeight, constant: 1)
+        let width = NSLayoutConstraint(item: addMember, attribute: .Width, relatedBy: .Equal, toItem: scrollView, attribute: .Height, multiplier: 305/k6sHeight, constant: 1)
+        NSLayoutConstraint.activateConstraints([top, width, height])
         keepView(addMember, onPages: [0,1,2])
         let addMemberAnimation = AlphaAnimation(view: addMember)
         addMemberAnimation[0] = 0
@@ -397,10 +421,14 @@ extension ViewController {
     }
     
     private func configureCheckmarkA() {
-        let height = NSLayoutConstraint(item: checkmarkA, attribute: .Height, relatedBy: .LessThanOrEqual, toItem: scrollView, attribute: .Height, multiplier: 1, constant: 11*pixel)
+        let height = NSLayoutConstraint(item: checkmarkA, attribute: .Height, relatedBy: .LessThanOrEqual, toItem: scrollView, attribute: .Height, multiplier: 11/k6sHeight, constant: 1)
         let top = NSLayoutConstraint(item: checkmarkA, attribute: .Top, relatedBy: .GreaterThanOrEqual, toItem: scrollView, attribute: .Top, multiplier: 1, constant: 170*pixel)
         NSLayoutConstraint.activateConstraints([height,top])
-        keepView(checkmarkA, onPages: [0.2, 1.2, 2.2], atTimes: [0, 1, 2])
+        
+        let page1 = 0.2 * widthRate
+        let page2 = 1 + 0.2 * widthRate
+        let page3 = 2 + 0.2 * widthRate
+        keepView(checkmarkA, onPages: [page1, page2, page3], atTimes: [0, 1, 2])
         
         let checkmarkAScaleAnimation = ScaleAnimation(view: checkmarkA)
         checkmarkAScaleAnimation[0.7] = 0.8
@@ -420,10 +448,14 @@ extension ViewController {
     }
     
     private func configureCheckmarkB() {
-        let height = NSLayoutConstraint(item: checkmarkB, attribute: .Height, relatedBy: .LessThanOrEqual, toItem: scrollView, attribute: .Height, multiplier: 1, constant: 11*pixel)
+        let height = NSLayoutConstraint(item: checkmarkB, attribute: .Height, relatedBy: .LessThanOrEqual, toItem: scrollView, attribute: .Height, multiplier: 11/k6sHeight, constant: 1)
         let top = NSLayoutConstraint(item: checkmarkB, attribute: .Top, relatedBy: .GreaterThanOrEqual, toItem: scrollView, attribute: .Top, multiplier: 1, constant: 268*pixel)
         NSLayoutConstraint.activateConstraints([height,top])
-        keepView(checkmarkB, onPages: [0.2, 1.2, 2.2], atTimes: [0, 1, 2])
+        
+        let page1 = 0.2 * widthRate
+        let page2 = 1 + 0.2 * widthRate
+        let page3 = 2 + 0.2 * widthRate
+        keepView(checkmarkB, onPages: [page1, page2, page3], atTimes: [0, 1, 2])
         
         let checkmarkBScaleAnimation = ScaleAnimation(view: checkmarkB)
         checkmarkBScaleAnimation[0.8] = 0.8
@@ -443,10 +475,14 @@ extension ViewController {
     }
     
     private func configureCheckmarkC() {
-        let height = NSLayoutConstraint(item: checkmarkC, attribute: .Height, relatedBy: .LessThanOrEqual, toItem: scrollView, attribute: .Height, multiplier: 1, constant: 11*pixel)
+        let height = NSLayoutConstraint(item: checkmarkC, attribute: .Height, relatedBy: .LessThanOrEqual, toItem: scrollView, attribute: .Height, multiplier: 11/k6sHeight, constant: 1)
         let top = NSLayoutConstraint(item: checkmarkC, attribute: .Top, relatedBy: .GreaterThanOrEqual, toItem: scrollView, attribute: .Top, multiplier: 1, constant: 366*pixel)
         NSLayoutConstraint.activateConstraints([height,top])
-        keepView(checkmarkC, onPages: [0.2, 1.2, 2.2], atTimes: [0, 1, 2])
+        
+        let page1 = 0.2 * widthRate
+        let page2 = 1 + 0.2 * widthRate
+        let page3 = 2 + 0.2 * widthRate
+        keepView(checkmarkC, onPages: [page1, page2, page3], atTimes: [0, 1, 2])
         
         let checkmarkCScaleAnimation = ScaleAnimation(view: checkmarkC)
         checkmarkCScaleAnimation[0.9] = 0.8
@@ -466,10 +502,15 @@ extension ViewController {
     }
     
     private func configureInviteButton() {
-        let height = NSLayoutConstraint(item: inviteButton, attribute: .Height, relatedBy: .LessThanOrEqual, toItem: scrollView, attribute: .Height, multiplier: 1, constant: 29*pixel)
+        let height = NSLayoutConstraint(item: inviteButton, attribute: .Height, relatedBy: .Equal, toItem: scrollView, attribute: .Height, multiplier: 29/k6sHeight, constant: 1)
+        let width = NSLayoutConstraint(item: inviteButton, attribute: .Width, relatedBy: .Equal, toItem: scrollView, attribute: .Height, multiplier: 29/k6sHeight, constant: 1)
         let top = NSLayoutConstraint(item: inviteButton, attribute: .Top, relatedBy: .GreaterThanOrEqual, toItem: scrollView, attribute: .Top, multiplier: 1, constant: 66*pixel)
-        NSLayoutConstraint.activateConstraints([height,top])
-        keepView(inviteButton, onPages: [0.3, 1.3, 2.3], atTimes: [0, 1, 2])
+        NSLayoutConstraint.activateConstraints([height, width, top])
+        
+        let page1 = 0.3 * widthRate
+        let page2 = 1 + 0.3 * widthRate
+        let page3 = 2 + 0.3 * widthRate
+        keepView(inviteButton, onPages: [page1, page2, page3], atTimes: [0, 1, 2])
         
         let inviteButtonScaleAnimation = ScaleAnimation(view: inviteButton)
         inviteButtonScaleAnimation[0.8] = 0
@@ -484,9 +525,10 @@ extension ViewController {
     }
 
     private func configureProjectPage() {
-        let top = NSLayoutConstraint(item: projectPage, attribute: .Top, relatedBy: .GreaterThanOrEqual, toItem: scrollView, attribute: .Top, multiplier: 1, constant: 31*pixel)
-        let height = NSLayoutConstraint(item: projectPage, attribute: .Height, relatedBy: .LessThanOrEqual, toItem: scrollView, attribute: .Height, multiplier: 1, constant: 422*pixel)
-        NSLayoutConstraint.activateConstraints([top,height])
+        let top = NSLayoutConstraint(item: projectPage, attribute: .Top, relatedBy: .GreaterThanOrEqual, toItem: scrollView, attribute: .Top, multiplier: 1, constant: 31 * pixel)
+        let height = NSLayoutConstraint(item: projectPage, attribute: .Height, relatedBy: .LessThanOrEqual, toItem: scrollView, attribute: .Height, multiplier: 422/k6sHeight, constant: 1)
+        let width = NSLayoutConstraint(item: projectPage, attribute: .Width, relatedBy: .Equal, toItem: scrollView, attribute: .Height, multiplier: 305/k6sHeight, constant: 1)
+        NSLayoutConstraint.activateConstraints([top, width, height])
         keepView(projectPage, onPages: [1,2])
         let projectPageAnimation = AlphaAnimation(view: projectPage)
         projectPageAnimation[1] = 0
@@ -496,8 +538,9 @@ extension ViewController {
     
     private func configureProjectItems() {
         let top = NSLayoutConstraint(item: projectItems, attribute: .Top, relatedBy: .GreaterThanOrEqual, toItem: scrollView, attribute: .Top, multiplier: 1, constant: kScreenHeight)
-        let height = NSLayoutConstraint(item: projectItems, attribute: .Height, relatedBy: .LessThanOrEqual, toItem: scrollView, attribute: .Height, multiplier: 1, constant: 344*pixel)
-        NSLayoutConstraint.activateConstraints([top,height])
+        let height = NSLayoutConstraint(item: projectItems, attribute: .Height, relatedBy: .LessThanOrEqual, toItem: scrollView, attribute: .Height, multiplier: 344/k6sHeight, constant: 1)
+        let width = NSLayoutConstraint(item: projectItems, attribute: .Width, relatedBy: .Equal, toItem: scrollView, attribute: .Height, multiplier: 245/k6sHeight, constant: 1)
+        NSLayoutConstraint.activateConstraints([top, width, height])
         
         keepView(projectItems, onPages: [1,2])
         
@@ -516,9 +559,10 @@ extension ViewController {
     }
 
     private func configureEnterButton() {
-        let height = NSLayoutConstraint(item: enterButton, attribute: .Height, relatedBy: .LessThanOrEqual, toItem: scrollView, attribute: .Height, multiplier: 1, constant: 50*pixel)
+        let height = NSLayoutConstraint(item: enterButton, attribute: .Height, relatedBy: .LessThanOrEqual, toItem: scrollView, attribute: .Height, multiplier: 50/k6sHeight, constant: 1)
+        let width = NSLayoutConstraint(item: enterButton, attribute: .Width, relatedBy: .LessThanOrEqual, toItem: scrollView, attribute: .Height, multiplier: 291/k6sHeight, constant: 1)
         let bottom = NSLayoutConstraint(item: enterButton, attribute: .Bottom, relatedBy: .GreaterThanOrEqual, toItem: scrollView, attribute: .Bottom, multiplier: 1, constant: -(105*pixel))
-        NSLayoutConstraint.activateConstraints([height,bottom])
+        NSLayoutConstraint.activateConstraints([height, width, bottom])
         keepView(enterButton, onPage: 2)
     }
     
