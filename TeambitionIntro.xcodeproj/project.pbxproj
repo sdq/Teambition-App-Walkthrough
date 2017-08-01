@@ -7,13 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		05768CE48CDC2DCA4BC1A01B /* Pods_TeambitionIntro.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CC3871D8C251A4C754DC7519 /* Pods_TeambitionIntro.framework */; };
 		32F406581D40FC7D00B4083D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32F406571D40FC7D00B4083D /* AppDelegate.swift */; };
 		32F4065A1D40FC7D00B4083D /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32F406591D40FC7D00B4083D /* ViewController.swift */; };
 		32F4065D1D40FC7D00B4083D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 32F4065B1D40FC7D00B4083D /* Main.storyboard */; };
 		32F4065F1D40FC7D00B4083D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 32F4065E1D40FC7D00B4083D /* Assets.xcassets */; };
 		32F406621D40FC7D00B4083D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 32F406601D40FC7D00B4083D /* LaunchScreen.storyboard */; };
-		32F4066B1D410AC100B4083D /* RazzleDazzle.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 32F406691D410AA100B4083D /* RazzleDazzle.framework */; };
-		32F4066C1D410AC100B4083D /* RazzleDazzle.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 32F406691D410AA100B4083D /* RazzleDazzle.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -23,7 +22,6 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				32F4066C1D410AC100B4083D /* RazzleDazzle.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -31,6 +29,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		1F3AC60E511C3CB84075E68C /* Pods-TeambitionIntro.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TeambitionIntro.release.xcconfig"; path = "Pods/Target Support Files/Pods-TeambitionIntro/Pods-TeambitionIntro.release.xcconfig"; sourceTree = "<group>"; };
 		32F406541D40FC7D00B4083D /* TeambitionIntro.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TeambitionIntro.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		32F406571D40FC7D00B4083D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		32F406591D40FC7D00B4083D /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -38,7 +37,8 @@
 		32F4065E1D40FC7D00B4083D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		32F406611D40FC7D00B4083D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		32F406631D40FC7D00B4083D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		32F406691D410AA100B4083D /* RazzleDazzle.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RazzleDazzle.framework; path = Carthage/Build/iOS/RazzleDazzle.framework; sourceTree = "<group>"; };
+		CC3871D8C251A4C754DC7519 /* Pods_TeambitionIntro.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TeambitionIntro.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		D420120A42EDD95ABC8DAAEE /* Pods-TeambitionIntro.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TeambitionIntro.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TeambitionIntro/Pods-TeambitionIntro.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -46,19 +46,29 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				32F4066B1D410AC100B4083D /* RazzleDazzle.framework in Frameworks */,
+				05768CE48CDC2DCA4BC1A01B /* Pods_TeambitionIntro.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		125C1E18E27B5584C79AC776 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				D420120A42EDD95ABC8DAAEE /* Pods-TeambitionIntro.debug.xcconfig */,
+				1F3AC60E511C3CB84075E68C /* Pods-TeambitionIntro.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 		32F4064B1D40FC7D00B4083D = {
 			isa = PBXGroup;
 			children = (
-				32F406691D410AA100B4083D /* RazzleDazzle.framework */,
 				32F406561D40FC7D00B4083D /* TeambitionIntro */,
 				32F406551D40FC7D00B4083D /* Products */,
+				125C1E18E27B5584C79AC776 /* Pods */,
+				DB907C7FCF6892E607E9BB58 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -83,6 +93,14 @@
 			path = TeambitionIntro;
 			sourceTree = "<group>";
 		};
+		DB907C7FCF6892E607E9BB58 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				CC3871D8C251A4C754DC7519 /* Pods_TeambitionIntro.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -90,10 +108,13 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 32F406661D40FC7D00B4083D /* Build configuration list for PBXNativeTarget "TeambitionIntro" */;
 			buildPhases = (
+				B07A108BF92EDE90DA0906E9 /* [CP] Check Pods Manifest.lock */,
 				32F406501D40FC7D00B4083D /* Sources */,
 				32F406511D40FC7D00B4083D /* Frameworks */,
 				32F406521D40FC7D00B4083D /* Resources */,
 				32F4066D1D410AC100B4083D /* Embed Frameworks */,
+				167BCF487A9E6BF9263E6ED2 /* [CP] Embed Pods Frameworks */,
+				A2E7190C0816E2FF25A0316E /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -116,6 +137,7 @@
 				TargetAttributes = {
 					32F406531D40FC7D00B4083D = {
 						CreatedOnToolsVersion = 7.3.1;
+						LastSwiftMigration = 0830;
 					};
 				};
 			};
@@ -149,6 +171,54 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		167BCF487A9E6BF9263E6ED2 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-TeambitionIntro/Pods-TeambitionIntro-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		A2E7190C0816E2FF25A0316E /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-TeambitionIntro/Pods-TeambitionIntro-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		B07A108BF92EDE90DA0906E9 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		32F406501D40FC7D00B4083D /* Sources */ = {
@@ -267,6 +337,7 @@
 		};
 		32F406671D40FC7D00B4083D /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = D420120A42EDD95ABC8DAAEE /* Pods-TeambitionIntro.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -278,12 +349,14 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = net.shidanqing.TeambitionIntro;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
 		32F406681D40FC7D00B4083D /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 1F3AC60E511C3CB84075E68C /* Pods-TeambitionIntro.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -295,6 +368,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = net.shidanqing.TeambitionIntro;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
